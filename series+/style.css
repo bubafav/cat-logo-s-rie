@@ -1,0 +1,315 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1b0a72;
+    color: #fffafa;
+    line-height: 1.6;
+}
+
+.container{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* ===== HEADER ===== */
+
+header{
+    background-color: black;
+    padding: 15px 0;
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.menu{
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.menu a{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover{
+    color: #919191;
+}
+
+/* ===== BANNER NETFLIX (IMAGEM SE MEXENDO) ===== */
+
+.banner{
+    height: 75vh;
+    background-image: url("netiflix.jpg");
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: bannerMove 25s ease-in-out infinite alternate;
+}
+
+/* camada escura */
+.banner::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+}
+
+.banner-overlay{
+    position: relative;
+    text-align: center;
+    color: #fff;
+    max-width: 700px;
+    padding: 40px;
+    animation: fadeUp 1.5s ease;
+}
+
+.banner-overlay h2{
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.banner-overlay p{
+    font-size: 18px;
+}
+
+/* animações */
+@keyframes bannerMove{
+    0%{
+        background-size: 110%;
+        background-position: center top;
+    }
+    50%{
+        background-size: 115%;
+        background-position: center center;
+    }
+    100%{
+        background-size: 120%;
+        background-position: center bottom;
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== SEÇÕES ===== */
+
+.secao{
+    padding: 60px 0;
+}
+
+.secao-cinza{
+    background-color: #000000;
+}
+
+/* ===== FILTROS ===== */
+
+.filtros{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filtro{
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.filtro:hover{
+    background-color: #4b494b;
+}
+
+/* ===== CARROSSEL ===== */
+
+.carousel{
+    overflow: hidden;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.carousel-track{
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scroll 35s linear infinite;
+}
+
+.carousel-track:hover{
+    animation-play-state: paused;
+}
+
+.card-serie{
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 250px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
+    display: block;
+}
+
+
+.card-serie img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.card-serie h3{
+    color: #000;
+}
+
+@keyframes scroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== SOBRE / CONTATO ===== */
+
+#sobre,
+#contato{
+    text-align: center;
+}
+
+#sobre p,
+#contato p{
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    background-color: #1b0a72;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* ===== MODAL ===== */
+
+.modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal:target{
+    display: flex;
+}
+
+.modal-conteudo{
+    background: #fff;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-conteudo img{
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.modal-conteudo h2,
+.modal-conteudo p{
+    color: #333;
+}
+
+.fechar{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 26px;
+    text-decoration: none;
+    color: #000;
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+
+.btn-voltar{
+    display: inline-block;
+    margin: 30px auto 0;
+    padding: 10px 25px;
+    background-color: #1b0a72;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.btn-voltar:hover{
+    background-color: #570c69;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width: 768px){
+    header .container{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .banner{
+        height: 60vh;
+        animation: none; /* evita bug em celular */
+        background-size: cover;
+    }
+
+    .banner-overlay h2{
+        font-size: 30px;
+    }
+}
